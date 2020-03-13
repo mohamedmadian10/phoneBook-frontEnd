@@ -1,0 +1,50 @@
+<div class="container">
+  <div class="row " style="justify-content: space-between;">
+    <div>
+      <h2>Phone Book</h2>
+    </div>
+    <div style="padding:5px;margin:5px;">
+      <input
+        class="search "
+        type="text"
+        placeholder="Search User "
+        [(ngModel)]="searchTxt"
+      />
+      <i class="fa fa-search" style="color: #330033;"></i>
+    </div>
+  </div>
+  
+  
+
+  <div>
+    <table class="table table-dark table-hover   ">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>phone Number</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users |filter:searchTxt">
+          <td>{{ user.name }}</td>
+          <td>{{ user.phonenumber }}</td>
+          <td><button class="btn btn-warning" (click)="openModalWithComponent('Edit',user.id )">Edit</button></td>
+          <td>
+            <button class="btn btn-danger" (click)="deleteUser(user.id)">
+              Delate
+            </button>
+          </td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td>
+            <button class="btn btn-primary" (click)="openModalWithComponent('Add')">
+              Add User
+            </button>
+          </td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+</div>

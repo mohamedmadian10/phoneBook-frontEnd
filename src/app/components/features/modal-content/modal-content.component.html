@@ -1,0 +1,59 @@
+<div class="modal-header">
+  <h4 class="modal-title pull-left">{{ title }}</h4>
+  <button
+    type="button"
+    class="close pull-right"
+    aria-label="Close"
+    (click)="bsModalRef.hide()"
+  >
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <form [formGroup]="AddOrEdit" (ngSubmit)="onAddOrEdit(AddOrEdit.value)">
+    <div class="form-group">
+      <label for="">Name</label>
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Name"
+        formControlName="name"
+        [(ngModel)]="newuser.name"
+      />
+      <span 
+      *ngIf="(name.dirty.errors || name.touched) && name.invalid "
+  >
+    Please Enter A valid Name!
+      </span>
+
+    </div>
+    <div class="form-group">
+      <label for="">Phone Number</label>
+      <input
+        type="text"
+        class="form-control"
+        placeholder="phone Number"
+        formControlName="phonenumber"
+        [(ngModel)]="newuser.phonenumber"
+      />
+      <span 
+      *ngIf="(phoneNumber.dirty || phoneNumber.touched) && phoneNumber.invalid && phoneNumber.errors.invalidNumber"
+  >
+    Value has to be a number
+        
+      </span>
+    </div>
+    <button
+      type="submit"
+      class="btn btn-success"
+      [disabled]="AddOrEdit.invalid"
+    >
+      {{ newuser.id === 0 ? "Add" : "Update" }}
+    </button>
+  </form>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-default" (click)="bsModalRef.hide()">
+    {{ closeBtnName }}
+  </button>
+</div>

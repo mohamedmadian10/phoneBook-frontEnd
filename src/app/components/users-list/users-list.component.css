@@ -1,0 +1,10 @@
+.search{
+    border-top-style: hidden;
+    border-right-style: hidden;
+    border-left-style: hidden;
+    border-bottom-style: groove;
+    background-color:transparent;
+}
+.search:focus{
+    outline: none;
+}
