@@ -71,6 +71,8 @@ export class ModalContentComponent implements OnInit {
     if (this.formType === "Add") {
       this.userservice.addUser(this.AddOrEdit.value).subscribe(newuser => {
         // console.log(newuser);
+        this.userservice.onUserListChanged.next(true);
+
       });
     } else {
       this.userservice
